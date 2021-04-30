@@ -21,7 +21,7 @@
                                 @foreach ($survey_reports as $question)
                                     <tr>
                                         <th>
-                                           <div class="px-2 py-2 my-0" style="border-left: 5px solid rgb(131, 175, 194);box-shadow: 2px 2px 2px 2px #83afc27d">
+                                           <div class="px-2 py-2 my-0" style="border-left: 5px solid rgb(131, 175, 194);box-shadow: 0px 2px 2px 0px #83afc27d">
                                             <div class="row w-50 d-flex">
                                                 <strong class="font-weight-bold pl-2" style="font-size: 20px;">Question {{ $loop->iteration??'' }}: &nbsp;&nbsp;</strong> 
                                                 <strong class="text-primary pl-2 mt-1" style="font-size: 18px;">{{ $question->question??'' }}</strong>
