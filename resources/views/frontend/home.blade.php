@@ -47,7 +47,7 @@
 
                     	<form role="form" action="{{ route('answers.store') }}" method="post" id="myForm">
                             @csrf
-                    		<p>Fill all form field to go next step</p>
+                    		<p class="font-weight-bold">Fill all form field to go next step</p>
 							
 							<!-- Form progress -->
                     		<div class="form-wizard-steps form-wizard-tolal-steps-4">
@@ -91,7 +91,7 @@
 								  </div>
 								</div>
 								<div class="row ml-1 my-5 justify-content-center">
-                                    {!! $survey->welcome_msg??'welcome' !!}
+                                    {!! $survey->welcome_msg?? "<h3 class='font-weight-bold'>Welcome To Our Survey APP !</h3>" !!}
                                 </div>
                                 @isset($survey)
                                 <div class="form-wizard-buttons">
@@ -182,7 +182,7 @@
 
                             <fieldset>
 								<div class="row ml-1 my-4 justify-content-center">
-                                    {!! $survey->thank_msg??'Thanks For Everything!' !!}
+                                    {!! $survey->thank_msg?? "<h3 class='font-weight-bold'>Thanks For Everything!</h3>" !!}
                                 </div>
                             </fieldset>
                     	
@@ -195,11 +195,5 @@
             <!-- /row-->
         </div>
     </div>
-<script>
-    $(document).ready(function(){
-        
-        
-    })
-</script>
 </body>
 </html>
