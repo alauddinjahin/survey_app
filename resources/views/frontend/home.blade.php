@@ -115,22 +115,22 @@
 								<!-- Progress Bar -->
                     			<div class="form-group">
                     			    <label>Name: <span>*</span></label>
-                                    <input type="text" name="name" placeholder="Name" class="form-control voter_name required">
+                                    <input type="text" name="name" placeholder="Name" class="form-control voter_name ">
                                 </div>
 
                     			<div class="form-group">
                     			    <label>Email: <span>*</span></label>
-                                    <input type="text" name="email" placeholder="Email" class="form-control voter_email required">
+                                    <input type="text" name="email" placeholder="Email" class="form-control voter_email ">
                                 </div>
 
 								<div class="form-group">
                     			    <label>Phone: <span>*</span></label>
-                                    <input type="text" name="phone" placeholder="Phone" class="form-control voter_phone required">
+                                    <input type="text" name="phone" placeholder="Phone" class="form-control voter_phone ">
                                 </div>
 
                                 <div class="form-group">
                     			    <label>Address: <span>*</span></label>
-                                    <textarea rows="2" name="address" placeholder="Address" class="form-control voter_address required"></textarea>
+                                    <textarea rows="2" name="address" placeholder="Address" class="form-control voter_address "></textarea>
                                 </div>
 								
                                 <div class="form-wizard-buttons">
@@ -215,9 +215,9 @@
                 },
                 error       :function(err){
                     leaveErrorMessage(`${err?.responseJSON?.msg??'Something wents wrong!'}`);
-                    setTimeout(function(){
-                        window.location.reload();
-                    },2000)
+                    // setTimeout(function(){
+                    //     window.location.reload();
+                    // },2000)
                 }
             })
         });
