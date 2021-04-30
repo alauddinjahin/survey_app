@@ -26,21 +26,30 @@
                                                 <strong class="font-weight-bold pl-2" style="font-size: 20px;">Question : &nbsp;&nbsp;</strong> 
                                                 <strong class="text-primary pl-2 mt-1" style="font-size: 18px;">{{ $question->question??'' }}</strong>
                                             </div>
+
+                                            @php 
+                                                $main = totalVote($question->survey_id, $question->id);
+                                                $percentage =($main*100)/$main;
+                                            @endphp
+
                                             @if(!is_null($question->json_option))
                                                 <div class="row w-50 my-2">
                                                     <div class="col-md-12 text-left">
-                                                        <strong class="text-dark" style="font-size: 16px;">Total Vote <span class="badge badge-info">{{ totalVote($question->survey_id, $question->id) }}</span></strong>
+                                                        <strong class="text-dark" style="font-size: 16px;">Total Vote <span class="badge badge-info">{{ $main }}</span></strong>
                                                     </div>
                                                 </div>
 
                                                 @foreach (json_decode($question->json_option) as $item)
+                                                    @php
+                                                    $subVotes = hasSubVotes($question->survey_id, $question->id,$item);
+                                                    @endphp
                                                     <div class="row w-50 my-1">
                                                         <div class="col-md-6 text-left">
-                                                            <strong class="text-dark" style="font-size: 15px;">{{ $loop->iteration??'' }} ) {{ $item??'' }} <span class="badge badge-primary">{{ hasSubVotes($question->survey_id, $question->id,$item) }}</span></strong>
+                                                            <strong class="text-dark" style="font-size: 15px;">{{ $loop->iteration??'' }} ) {{ $item??'' }} <span class="badge badge-primary">{{ $subVotes }}</span></strong>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="progress" style="height: 15px;">
-                                                                <div class="progress-bar progress-bar-striped" style="min-width:20px;width:40%"><span style="font-size: 10px;">70%</span></div>
+                                                                <div class="progress-bar progress-bar-striped" style="min-width:20px;width:{{ round(($subVotes*100)/$main,2) }}%"><span style="font-size: 10px;">{{ round(($subVotes*100)/$main,2) }}%</span></div>
                                                             </div> 
                                                         </div>
                                                     </div> 
@@ -52,7 +61,7 @@
                                                 </div>
                                                 <div class="col-md-6 mt-2">
                                                     <div class="progress" style="height: 15px;">
-                                                        <div class="progress-bar progress-bar-striped" style="min-width:20px; width:{{ totalVote($question->survey_id, $question->id) }}%"><span style="font-size: 10px;">{{ totalVote($question->survey_id, $question->id) }}%</span></div>
+                                                        <div class="progress-bar progress-bar-striped" style="min-width:20px; width:{{ round($percentage,2) }}%"><span style="font-size: 10px;">{{ round($percentage,2) }}%</span></div>
                                                     </div> 
                                                 </div>
                                             </div>      
