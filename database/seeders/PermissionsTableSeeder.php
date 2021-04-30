@@ -15,10 +15,10 @@ class PermissionsTableSeeder extends Seeder
     {
         $users = [
             [
-                'name'          => 'Accounts',
+                'name'          => 'Admin',
                 'role_id'       => 1,
                 'is_active'     => 1,
-                'email'         => 'mdalauddinjahin365@gmail.com',
+                'email'         => 'admin@gmail.com',
                 'password'      => bcrypt('12345678'),
                 'created_at'    => Carbon::now()->toDateTimeString(),
                 'updated_at'    => Carbon::now()->toDateTimeString(),
