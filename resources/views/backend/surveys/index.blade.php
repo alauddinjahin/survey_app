@@ -152,8 +152,8 @@
 
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="survey">Copy</label>
-                    <textarea name="survey" id="survey" class="form-control">
+                    <label for="survey" class="copy">Copy</label>
+                    <textarea name="survey" id="survey" class="form-control" onclick="copyToClipboard()">
                         <iframe src="{{ route('embed_survey') }}" width="600" height="450" style="border:0;" loading="lazy"></iframe>
                     </textarea>
                 </div>
@@ -227,10 +227,16 @@
         });
 
 
-
-
     });
 
+
+function copyToClipboard() {
+    const el    = document.getElementById('survey');
+    const copy  = document.querySelector('.copy');
+    el.select();
+    document.execCommand('copy');
+    copy.innerText = 'Copied';
+}
 
 function embadedSurvey()
 {
