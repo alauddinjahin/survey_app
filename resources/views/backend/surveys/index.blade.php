@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @push('css')
 <style>
-.modal-body{
+#myModal .modal-body{
     height: 80vh;
     overflow-y: auto;
 }
@@ -49,6 +49,7 @@
                                         </td>
                                         <td class="text-left" data-id="{{ $survey->id }}" style="width: 150px;">
                                             <button class="btn btn-sm btn-info mx-1 edit"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-info mx-1 embaded"><i class="fa fa-clone"></i> Embed</button>
                                             @if(hasVotes($survey->id )>0)
                                             <a href="{{ route('surveys.show',$survey->id) }}" class="btn btn-sm btn-success text-center"><i class="fa fa-eye text-white"></i> Reports</a>
                                             @endif
@@ -140,6 +141,28 @@
 </div>
 
 
+<div id="myModalEmbed" class="modal fade" data-backdrop="static" data-keyboard="false" aria-modal="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content" style="width: 700px !important;">
+
+            <div class="modal-header" style="background: #0e53a1;">
+                <h5 class="modal-title text-white">Embeded Survey</h5>
+                <span aria-hidden="true" data-dismiss="modal"><i class="fa fa-times text-light" style="cursor: pointer;"></i></span>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="survey">Copy</label>
+                    <textarea name="survey" id="survey" class="form-control">
+                        <iframe src="{{ url('/') }}" width="600" height="450" style="border:0;" loading="lazy"></iframe>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @endsection
 
 @push('js')
@@ -184,6 +207,7 @@
         //eventlistener
         $(document).on('click','#create',showModal);
         $(document).on('click','.edit',editForm);
+        $(document).on('click','.embaded',embadedSurvey);
 
         // init dataTable 
         load_dataTable({
@@ -206,6 +230,12 @@
 
 
     });
+
+
+function embadedSurvey()
+{
+    $("#myModalEmbed").modal('show');
+}    
 
 
 
