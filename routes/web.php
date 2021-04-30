@@ -14,6 +14,7 @@ Auth::routes();
 
 Route::resource('/', FrontendController::class);
 Route::get('/embed', [FrontendController::class,'embed_survey'])->name('embed_survey');
+Route::resource('answers', AnswerController::class);
 
 Route::redirect('/admin', '/dashboard');
 
@@ -26,7 +27,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth','authorize']],fun
 
     Route::resource('questions', QuestionController::class);
     Route::resource('payments', PaymentController::class);
-    Route::resource('answers', AnswerController::class);
 
     //users 
     Route::post('/user-status',         [Pondit\Authorize\Controllers\UsersController::class, 'updateUserStatus'])->name('users.updateUserStatus');

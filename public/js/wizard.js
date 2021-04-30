@@ -114,6 +114,7 @@
 								leaveSuccessMessage(res?.msg);
 							},
 							error       :function(err){
+								console.log(err)
 								leaveErrorMessage(`${err?.responseJSON?.msg??'Something wents wrong!'}`);
 								setTimeout(function(){
 								    window.location.reload();
