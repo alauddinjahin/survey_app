@@ -175,7 +175,7 @@
 
                                 <div class="form-wizard-buttons">
                                     <button type="button" class="btn btn-previous" id="last">Previous</button>
-                                    <button type="button" class="btn btn-next" id="confirmSubmit">Submit</button>
+                                    <button type="button" class="btn btn-next confirmSubmit" id="confirmSubmit">Submit</button>
                                 </div>
                             </fieldset>
 							<!-- Form Step 3 -->
@@ -197,31 +197,7 @@
     </div>
 <script>
     $(document).ready(function(){
-        $(document).on('click','#confirmSubmit',function(e){
-            e.preventDefault();
-
-            let form     = $('#myForm');
-            let formData = form.serialize();
-
-            $.ajax({
-                url         : form.attr('action'),
-                method      : 'POST',
-                cache       : false,
-                data        : formData,
-                beforeSend  :function(){
-                    console.log('sending ....')
-                },
-                success     :function(res){
-                    leaveSuccessMessage(res?.msg);
-                },
-                error       :function(err){
-                    leaveErrorMessage(`${err?.responseJSON?.msg??'Something wents wrong!'}`);
-                    // setTimeout(function(){
-                    //     window.location.reload();
-                    // },2000)
-                }
-            })
-        });
+        
         
     })
 </script>

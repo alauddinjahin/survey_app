@@ -93,6 +93,36 @@
 			// fields validation
 			
 			if( next_step ) {
+
+				if($(this).hasClass('confirmSubmit')){
+
+					$(document).on('click','#confirmSubmit',function(e){
+						e.preventDefault();
+		
+						let form     = $('#myForm');
+						let formData = form.serialize();
+			
+						$.ajax({
+							url         : form.attr('action'),
+							method      : 'POST',
+							cache       : false,
+							data        : formData,
+							beforeSend  :function(){
+								console.log('sending ....')
+							},
+							success     :function(res){
+								leaveSuccessMessage(res?.msg);
+							},
+							error       :function(err){
+								leaveErrorMessage(`${err?.responseJSON?.msg??'Something wents wrong!'}`);
+								setTimeout(function(){
+								    window.location.reload();
+								},2000)
+							}
+						})
+					});
+				}
+
 				parent_fieldset.fadeOut(400, function() {
 					// change icons
 					current_active_step.removeClass('active').addClass('activated').next().addClass('active');
