@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="redirect_uri">Redirect Url</label>
+                            <label for="redirect_uri">Redirect URI (Optional)</label>
                             <input type="text" name="redirect_uri" id="redirect_uri" class="form-control">
                         </div>
                         
