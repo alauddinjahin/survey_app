@@ -148,7 +148,7 @@
 								  </div>
 								</div>
 								<!-- Progress Bar -->
-                                <div class="row">
+                                <div class="row" style="height: 600px;overflow-y: auto;">
                             
                                      <div class="submit step wizard-step ml-2" >
                                          <ul class="pl-2 mt-2" style="width: 109% !important;">
