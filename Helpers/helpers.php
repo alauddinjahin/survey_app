@@ -45,6 +45,15 @@ if(!function_exists('totalVote')){
 
 }
 
+if(!function_exists('hasQuestions')){
+
+	function hasQuestions($id=null)
+	{
+		return DB::table('questions')->where('survey_id', $id)->count();
+	}
+
+}
+
 if(!function_exists('hasVotes')){
 
 	function hasVotes($id=null)

@@ -22,6 +22,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth','authorize']],fun
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::resource('surveys', SurveyController::class);
+    Route::post('questions-order', [SurveyController::class,'updateQuestionsOrder'])->name('updateQuestionsOrder');
+
     Route::resource('questions', QuestionController::class);
     Route::resource('payments', PaymentController::class);
     Route::resource('answers', AnswerController::class);

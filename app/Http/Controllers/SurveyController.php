@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Exception;
 use App\Models\Survey;
 use Illuminate\Http\Request;
@@ -74,11 +75,14 @@ class SurveyController extends Controller
     public function show($id)
     {
         $survey_reports = DB::table('questions')
-                        ->where('survey_id',$id)
-                        ->orderBy('id','desc')
-                        ->get();
+                    ->where('survey_id',$id)
+                    ->orderBy('position','asc')
+                    ->get();
 
-        // dd( $survey_reports);                
+        if(isset($_GET['questions'])){
+            return view('backend.surveys.arrange', compact('survey_reports'));
+        }   
+
         return view('backend.surveys.show', compact('survey_reports'));
     }
 
@@ -138,5 +142,40 @@ class SurveyController extends Controller
     public function destroy(Survey $survey)
     {
         //
+    }
+
+
+    public function updateQuestionsOrder(Request $request)
+    {
+        try
+        {
+            $positions = $request->only('positions','survey_id');
+
+            if(count($positions['positions'])>0)
+            {
+                foreach($positions['positions'] as $key=>$position)
+                {
+                    $question = Question::where('survey_id', $positions['survey_id'])
+                                ->where('id', $position[0])
+                                ->update([ 'position'  => $position[1]]);
+
+                    if(!$question)
+                        throw new Exception("Unable to update position!", 403);   
+                    
+                }
+
+                return response()->json([
+                    'success'   => true,
+                    'msg'       => "Position updated successfully!"
+                ],200);
+            }
+
+        }catch(Exception $e)
+        {
+            return response()->json([
+                'success'   => false,
+                'msg'       => $e->getMessage()
+            ],$e->getCode());
+        }
     }
 }

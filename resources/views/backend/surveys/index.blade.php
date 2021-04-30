@@ -49,6 +49,9 @@
                                         </td>
                                         <td class="text-left" data-id="{{ $survey->id }}" style="width: 150px;">
                                             <button class="btn btn-sm btn-info mx-1 edit"><i class="fa fa-edit"></i></button>
+                                            @if(hasQuestions($survey->id )>0)
+                                            <a href="{{ route('surveys.show',$survey->id) }}?questions=true" class="btn btn-sm btn-primary text-center"><i class="fa fa-question-circle text-white"></i> Questions</a>
+                                            @endif
                                             <button class="btn btn-sm btn-info mx-1 embaded"><i class="fa fa-clone"></i> Embed</button>
                                             @if(hasVotes($survey->id )>0)
                                             <a href="{{ route('surveys.show',$survey->id) }}" class="btn btn-sm btn-success text-center"><i class="fa fa-eye text-white"></i> Reports</a>
