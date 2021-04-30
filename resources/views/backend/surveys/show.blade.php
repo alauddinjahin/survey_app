@@ -1,5 +1,28 @@
 @extends('backend.layouts.master')
 @push('css')
+<style>
+    @media print {
+         .d-print-none {
+             display: none;
+         }
+
+        .left-border{
+            border-left: 0px solid #fff !important;
+            box-shadow: 0px 0px 0px 0px #fff !important;
+        }
+
+        .badge-info,.badge-primary {
+            color: #000 !important;
+            background-color: #fff !important;
+            border: none !important;
+        }
+      }
+
+    .left-border{
+        border-left: 5px solid rgb(131, 175, 194);
+        box-shadow: 0px 2px 2px 0px #83afc27d;
+    }
+</style>
 @endpush
 @section('content')
 
@@ -7,7 +30,8 @@
 
 	<h4 class="page-title text-uppercase mt-3">
 		<i class="fab fa-artstation"></i>  Survey Reports
-		<button type="button" class="float-right btn btn-sm btn-primary btn-rounded width-md waves-effect waves-light" onclick="window.history.back()"> Back</button>
+		<button type="button" class="d-print-none float-right btn btn-sm btn-primary btn-rounded width-md waves-effect waves-light" onclick="window.history.back()"> Back</button>
+		<button type="button" class=" d-print-none float-right btn btn-sm btn-info btn-rounded width-md waves-effect waves-light mx-1" onclick="window.print()"> Print</button>
 	</h4><br>
 
 	<!-- end page content -->
@@ -21,7 +45,7 @@
                                 @foreach ($survey_reports as $question)
                                     <tr>
                                         <th>
-                                           <div class="px-2 py-2 my-0" style="border-left: 5px solid rgb(131, 175, 194);box-shadow: 0px 2px 2px 0px #83afc27d">
+                                           <div class="px-2 py-2 my-0 left-border">
                                             <div class="row w-50 d-flex">
                                                 <strong class="font-weight-bold pl-2" style="font-size: 20px;">Question {{ $loop->iteration??'' }}: &nbsp;&nbsp;</strong> 
                                                 <strong class="text-primary pl-2 mt-1" style="font-size: 18px;">{{ $question->question??'' }}</strong>
@@ -48,7 +72,7 @@
                                                         <div class="col-md-6 text-left">
                                                             <strong class="text-dark" style="font-size: 15px;">{{ $loop->iteration??'' }} ) {{ $item??'' }} <span class="badge badge-primary">{{ $subVotes }}</span></strong>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 d-print-none">
                                                             <div class="progress" style="height: 15px;">
                                                                 <div class="progress-bar progress-bar-striped" style="min-width:20px;width:{{ round(($subVotes*100)/$main,2) }}%"><span style="font-size: 10px;">{{ round(($subVotes*100)/$main,2) }}%</span></div>
                                                             </div> 
@@ -60,7 +84,7 @@
                                                 <div class="col-md-6 text-left">
                                                     <strong class="text-dark" style="font-size: 18px;">Total Vote <span class="badge badge-info">{{ totalVote($question->survey_id, $question->id) }}</span></strong>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+                                                <div class="col-md-6 mt-2 d-print-none">
                                                     <div class="progress" style="height: 15px;">
                                                         <div class="progress-bar progress-bar-striped" style="min-width:20px; width:{{ round($percentage,2) }}%"><span style="font-size: 10px;">{{ round($percentage,2) }}%</span></div>
                                                     </div> 
