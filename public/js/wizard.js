@@ -127,7 +127,6 @@
 		
 		// submit
 		$('.form-wizard').on('submit', function(e) {
-			
 			// fields validation
 			$(this).find('.required').each(function() {
 				if( $(this).val() == "" ) {

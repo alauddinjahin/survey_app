@@ -198,6 +198,7 @@
 <script>
     $(document).ready(function(){
         $(document).on('click','#confirmSubmit',function(e){
+            e.preventDefault();
 
             let form     = $('#myForm');
             let formData = form.serialize();
