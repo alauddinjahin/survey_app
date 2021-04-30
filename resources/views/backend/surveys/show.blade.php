@@ -28,7 +28,8 @@
                                             </div>
 
                                             @php 
-                                                $main = totalVote($question->survey_id, $question->id);
+                                                $mainVotes = totalVote($question->survey_id, $question->id);
+                                                $main = $mainVotes>0?$mainVotes:1;
                                                 $percentage =($main*100)/$main;
                                             @endphp
 
