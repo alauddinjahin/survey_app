@@ -13,6 +13,7 @@ Auth::routes();
 
 
 Route::resource('/', FrontendController::class);
+Route::get('/embed', [FrontendController::class,'embed_survey'])->name('embed_survey');
 
 Route::redirect('/admin', '/dashboard');
 

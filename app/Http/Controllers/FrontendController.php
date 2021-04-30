@@ -86,4 +86,13 @@ class FrontendController extends Controller
     {
         //
     }
+
+    public function embed_survey()
+    {
+        $survey = Survey::where('is_active',1)
+                ->whereDate('end_date','>=',date('Y-m-d'))
+                ->first();
+                
+        return view('frontend.embed',compact('survey'));
+    }
 }

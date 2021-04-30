@@ -43,7 +43,7 @@
     
                 <div class="col-md-6 content-right" id="start">
 
-                    <div class="form-wizard form-header-classic form-body-classic w-100" >
+                    <div class="form-wizard form-header-classic form-body-classic w-100"  id="embedarea">
 
                     	<form role="form" action="{{ route('answers.store') }}" method="post" id="myForm">
                             @csrf

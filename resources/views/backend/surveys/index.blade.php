@@ -77,7 +77,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content" style="width: 700px !important;">
 
-            <div class="modal-header" style="background: #5d74a8;">
+            <div class="modal-header" style="background: #0e53a1;">
                 <h5 class="modal-title text-white">Survey Form</h5>
                 <span aria-hidden="true" data-dismiss="modal"><i class="fa fa-times text-light" style="cursor: pointer;"></i></span>
             </div>
@@ -154,7 +154,7 @@
                 <div class="form-group">
                     <label for="survey">Copy</label>
                     <textarea name="survey" id="survey" class="form-control">
-                        <iframe src="{{ url('/') }}" width="600" height="450" style="border:0;" loading="lazy"></iframe>
+                        <iframe src="{{ route('embed_survey') }}" width="600" height="450" style="border:0;" loading="lazy"></iframe>
                     </textarea>
                 </div>
             </div>
