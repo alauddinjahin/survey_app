@@ -37,7 +37,7 @@
                                 @foreach ($questions as $question)
                                     <tr data-status="{{ boolval($question->is_active) ? 'active': 'inactive' }}" data-json="{{ $question }}">
                                         <td>{{ $question->survey->title??'' }}</td>
-                                        <td>{{ $question->question??'' }}</td>
+                                        <td class="text-left">{{ $question->question??'' }}</td>
                                         <td>{{ $question->step_no??'' }}</td>
                                         <td>{!! boolval($question->is_required)?'<span class="fa fa-check-circle text-success"></span>':'<span class="fa fa-times text-danger"></span>' !!}</td>
                                         <td><span class="badge badge-info">{{ \Carbon\Carbon::parse($question->created_at)->diffForHumans()??'' }}</span></td>
