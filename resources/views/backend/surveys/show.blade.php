@@ -60,7 +60,7 @@
                                             @if(!is_null($question->json_option))
                                                 <div class="row w-50 my-2">
                                                     <div class="col-md-12 text-left">
-                                                        <strong class="text-dark" style="font-size: 16px;">Total Vote <span class="badge badge-info">{{ $main }}</span></strong>
+                                                        <strong class="text-dark" style="font-size: 16px;">Total Vote <span class="badge badge-info">{{ $mainVotes??0 }}</span></strong>
                                                     </div>
                                                 </div>
 
@@ -82,7 +82,7 @@
                                            @else 
                                             <div class="row w-50 my-2">
                                                 <div class="col-md-6 text-left">
-                                                    <strong class="text-dark" style="font-size: 18px;">Total Vote <span class="badge badge-info">{{ totalVote($question->survey_id, $question->id) }}</span></strong>
+                                                    <strong class="text-dark" style="font-size: 18px;">Total Vote <span class="badge badge-info">{{ $mainVotes??0  }}</span></strong>
                                                 </div>
                                                 <div class="col-md-6 mt-2 d-print-none">
                                                     <div class="progress" style="height: 15px;">
