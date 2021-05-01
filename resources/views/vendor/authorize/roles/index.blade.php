@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', 'Roles')
 @push('css')
 {{-- <link href="/vendor/authorize/css/app.css" rel="stylesheet"> --}}
 @endpush

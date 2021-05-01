@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', 'Survey Reports')
 @push('css')
 <style>
     @media print {

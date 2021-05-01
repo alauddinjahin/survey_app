@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', 'Surveys')
 @push('css')
 <style>
 #myModal .modal-body{

@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', 'Create Question')
 @push('css')
 <style>
 

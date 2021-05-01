@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', 'Questions Re-arrange')
 @push('css')
 @endpush
 @section('content')

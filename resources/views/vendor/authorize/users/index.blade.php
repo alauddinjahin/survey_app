@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', 'Users')
 @push('css')
 <link href="{{ asset('ui/backend/plugins/data-table/data-table-custom.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('ui/backend/src/js/pages/vendors/vendor.css') }}">

@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-
+@section('title', 'Edit User')
 @section('content')
    <div class="container my-5">
         <div class="panel panel-default card">

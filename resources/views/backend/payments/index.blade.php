@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', 'Payments')
 @push('css')
 @endpush
 @section('content')
@@ -166,7 +167,7 @@ function resetForm(route=null)
 
 function visibleFormData(data){
     $('#title').val(data.title);
-    $('#description').val(data.description);
+    CKEDITOR.instances['description'].setData(data.description);
 }
 
 </script>

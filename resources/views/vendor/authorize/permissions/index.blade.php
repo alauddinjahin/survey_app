@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', 'Permissions')
 @push('css')
 <link href="/vendor/authorize/css/tree.css" rel="stylesheet">
 @endpush
