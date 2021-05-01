@@ -14,6 +14,10 @@ class FrontendController extends Controller
      */
     public function index()
     {
+        if($_SERVER['DB_HOST'] != '127.0.0.1' && !check_internet()['success']){
+            return check_internet();
+        }
+
         $survey = Survey::where('is_active',1)
                 ->whereDate('end_date','>=',date('Y-m-d'))
                 ->first();
