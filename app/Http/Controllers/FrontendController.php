@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Survey;
+use Exception;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -14,9 +15,12 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        if($_SERVER['DB_HOST'] != '127.0.0.1' && !check_internet()['success']){
+        if(!array_key_exists('DB_HOST',$_SERVER))
+            throw new Exception("Please Check Your APP Envirnment!");
+
+        if($_SERVER['DB_HOST'] != '127.0.0.1' && !check_internet()['success'])
             return check_internet();
-        }
+        
 
         $survey = Survey::where('is_active',1)
                 ->whereDate('end_date','>=',date('Y-m-d'))
