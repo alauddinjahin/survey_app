@@ -12,7 +12,9 @@ use App\Http\Controllers\DashboardController;
 Auth::routes();
 
 
+Route::redirect('/home', '/');
 Route::resource('/', FrontendController::class);
+Route::get('/show/{id}',  [FrontendController::class,'show'])->name('frontend_show');
 Route::get('/embed', [FrontendController::class,'embed_survey'])->name('embed_survey');
 Route::resource('answers', AnswerController::class);
 

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Vendors\Vendor;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,7 +13,6 @@ use Pondit\Authorize\Models\Role;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, Authorizable;
-
 
     const ADMIN  = 1;
     const EDITOR = 2;
@@ -66,9 +64,19 @@ class User extends Authenticatable
         return $this->hasOne(Role::class,'id','role_id');
     }
 
+    public function voter()
+    {
+        return $this->hasOne(Voter::class,'user_id','id');
+    }
+
     public function isAdmin()
     {
         return $this->role_id === self::ADMIN;
+    }
+
+    public function isGuest()
+    {
+        return ($this->role_id === self::GUEST||$this->role->alias =='guest');
     }
 
 }

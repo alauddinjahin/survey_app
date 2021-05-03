@@ -30,7 +30,7 @@
 
     <div class="form-group">
         <label for="step_no">Step No</label>
-        <input type="number" name="step_no" id="step_no" class="form-control" required value="{{ isset($question) ? $question->step_no:'' }}">
+        <input type="number" name="step_no" id="step_no" class="form-control" required value="{{ isset($question) ? $question->step_no:'0' }}">
     </div>
     
     <div class="form-group custom-control custom-switch">

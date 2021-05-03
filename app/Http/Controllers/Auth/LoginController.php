@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Http\traits\CheckDefinedUserAuth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -19,7 +20,9 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers,CheckDefinedUserAuth{
+        CheckDefinedUserAuth::login insteadof AuthenticatesUsers;
+    }
 
     /**
      * Where to redirect users after login.

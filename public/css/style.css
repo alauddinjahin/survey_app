@@ -308,8 +308,8 @@ a.btn_1.rounded {
  text-align:center;
  position:relative;
  background:0 0;
- background:-webkit-linear-gradient(top,transparent,rgba(0,0,0,.5));
- background:linear-gradient(to bottom,transparent,rgba(0,0,0,.5));
+ background:-webkit-linear-gradient(left,transparent,rgba(0,0,0,.5));
+ background:linear-gradient(to left,transparent,rgba(0,0,0,.5));
 }
 @media (max-width:991px) {
  .content-left-wrapper {
@@ -369,10 +369,10 @@ a.btn_1.rounded {
  }
 }
 .content-right {
- padding:60px;
+ padding:50px;
  height:100%;
  min-height:100%;
- overflow-y:scroll;
+ /* overflow-y:scroll; */
  display:flex;
  justify-content:center;
  align-items:center
@@ -389,6 +389,22 @@ a#logo {
  top:15px;
  display:block;
  height:35px
+}
+
+a#login {
+    position:absolute;
+    right:20px;
+    top:15px;
+    display:block;
+    height:35px
+}
+
+a#profile {
+    position:absolute;
+    right:20px;
+    top:15px;
+    display:block;
+    height:45px
 }
 @media (max-width:991px) {
  a#logo {
@@ -1646,4 +1662,73 @@ input[type=file]::-webkit-file-upload-button:focus {
 .margin_60_35 {
  padding-top:60px;
  padding-bottom:35px
+}
+
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid rgba(0,0,0,.125) !important;
+    border-radius: .25rem;
+}
+
+.custom-bg {
+    background: #434bdf;
+    position: relative;
+    background: 0 0;
+    background:-webkit-linear-gradient(left,transparent,rgba(0,0,0,.5));
+    background:linear-gradient(to left,transparent,rgba(0,0,0,.5));
+}
+
+#profile:hover,#login:hover{
+    color: #000 !important;
+}
+
+@media (max-width:768px) {
+    #profile,#login {
+     display: none !important;
+    }
+
+    .navbar.sticky{
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
+
+
+/* .navbar.sticky{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-left: 22%;
+    padding-right: 22%;
+    background: #fff !important;
+    z-index: 1030;
+    box-shadow: 0 10px 10px -10px rgba(0,0,0,0.3);
+    animation-name: animationFade;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+} */
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-left: 15% !important;
+    padding-right: 15% !important;
+    z-index: 1030;
+    background: #fff !important;
+}
+
+.nav-item:hover{
+    border-bottom: 2px solid rgb(102, 71, 252);
 }

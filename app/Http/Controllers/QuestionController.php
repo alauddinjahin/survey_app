@@ -43,7 +43,7 @@ class QuestionController extends Controller
         try {
 
             $validator = Validator::make($request->all(),[
-                'question'  => 'required|unique:questions',
+                'question'  => 'required',
                 'survey_id' => 'required',
                 'step_no'   => 'required|integer',
             ]);
@@ -51,8 +51,15 @@ class QuestionController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }    
+
             
             $data = $request->all();
+
+            $check = $this->check_unique_question($data);
+            if(!$check['success']){
+                throw new Exception($check['msg'], $check['code']); 
+            }
+
             if(array_key_exists('is_required',$data)){
                 $data['is_required']=1;
             }
@@ -127,7 +134,7 @@ class QuestionController extends Controller
         try{
 
             $validator = Validator::make(request()->all(),[
-                'question'  => "required|unique:questions,question,{$question->id}",
+                'question'  => "required",
                 'survey_id' => 'required',
                 'step_no'   => 'required|integer',
             ]);
@@ -183,5 +190,31 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         //
+    }
+
+
+    private function check_unique_question($data=[])
+    {
+       try {
+            if(is_array($data)){
+
+                $question = Question::
+                whereRaw('LOWER(question)=?',strtolower($data['question']))
+                ->where('survey_id', $data['survey_id'])
+                ->first();
+
+                if($question)
+                    throw new Exception("Question Already Exists in this Survey!", 403);
+                    
+
+                return ['success'=>true, 'msg'=>'ok','code'=> 200];
+            }
+
+            throw new Exception("Invalid Request Data format!", 403);
+
+       } catch (\Exception $e) {
+           return ['success'=>false, 'msg'=>$e->getMessage(),'code'=> $e->getCode()];
+       }
+
     }
 }

@@ -92,31 +92,35 @@
                 <div class="modal-body">
 
                         <div class="form-group">
-                            <label for="title">Name</label>
+                            <label for="title">Name *</label>
                             <input type="text" name="title" id="title" class="form-control" placeholder="Survey Name">
                         </div>
 
                         <div class="form-group">
-                            <label for="wel_msg">Welcome Message</label>
+                            <label for="wel_msg">Desciotion *</label>
+                            <textarea name="description" id="description" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="wel_msg">Welcome Message *</label>
                             <textarea name="welcome_msg" id="welcome_msg" class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="thanks_msg">Thanks Message</label>
+                            <label for="thanks_msg">Thanks Message *</label>
                             <textarea name="thank_msg" id="thanks_msg" class="form-control"></textarea>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="start_date">Start Date</label>
+                                    <label for="start_date">Start Date *</label>
                                     <input type="text" autocomplete="off" name="start_date" id="start_date" class="form-control">
                                 </div>
                             </div>
     
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="end_date">End Date</label>
+                                    <label for="end_date">End Date *</label>
                                     <input type="text" autocomplete="off"  name="end_date" id="end_date" class="form-control">
                                 </div>
                             </div>
@@ -176,18 +180,24 @@
      window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
      $(document).ready(function(){
 
+        CKEDITOR.replace('description',{
+            width: '100%',
+            height:'100px',
+            resize_dir: 'vertical',
+            resize_maxHeight: 300,
+        });
         CKEDITOR.replace('welcome_msg',{
             width: '100%',
-            height:'auto',
+            height:'100px',
             resize_dir: 'vertical',
-            resize_maxHeight: 100,
+            resize_maxHeight: 300,
         });
 
         CKEDITOR.replace('thanks_msg',{
             width: '100%',
-            height:'auto',
+            height:'100px',
             resize_dir: 'vertical',
-            resize_maxHeight: 100,
+            resize_maxHeight: 300,
         });
 
 
@@ -283,6 +293,7 @@ function visibleFormData(data){
     $('#start_date').val(data.start_date);
     $('#end_date').val(data.end_date);
     $('#redirect_uri').val(data.redirect_uri);
+    CKEDITOR.instances['description'].setData(data.description);
     CKEDITOR.instances['welcome_msg'].setData(data.welcome_msg);
     CKEDITOR.instances['thanks_msg'].setData(data.thank_msg);
     Boolean(data.is_active) ? $('#is_active').prop('checked',true) : $('#is_active').prop('checked',false);

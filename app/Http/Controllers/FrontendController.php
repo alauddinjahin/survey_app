@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Survey;
 use Exception;
+use App\Models\Survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
@@ -25,8 +26,10 @@ class FrontendController extends Controller
         $survey = Survey::where('is_active',1)
                 ->whereDate('end_date','>=',date('Y-m-d'))
                 ->first();
+
+        $surveys = Survey::latest()->paginate(12);
                 
-        return view('frontend.home',compact('survey'));
+        return view('frontend.home',compact('survey','surveys'));
     }
 
     /**
@@ -58,7 +61,12 @@ class FrontendController extends Controller
      */
     public function show($id)
     {
-        //
+        $survey_reports = DB::table('questions')
+                    ->where('survey_id',$id)
+                    ->orderBy('position','asc')
+                    ->get(); 
+
+        return view('frontend.surveys.show', compact('survey_reports'));
     }
 
     /**
