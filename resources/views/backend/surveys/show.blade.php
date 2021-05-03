@@ -30,7 +30,7 @@
 <div class="container-fluid">
 
 	<h4 class="page-title text-uppercase mt-3">
-		<i class="fab fa-artstation"></i>  Survey Reports
+		<i class="fab fa-artstation"></i>  Survey Report
 		<button type="button" class="d-print-none float-right btn btn-sm btn-primary btn-rounded width-md waves-effect waves-light" onclick="window.history.back()"> Back</button>
 		<button type="button" class=" d-print-none float-right btn btn-sm btn-info btn-rounded width-md waves-effect waves-light mx-1" onclick="window.print()"> Print</button>
 	</h4><br>
@@ -53,8 +53,8 @@
                                             </div>
 
                                             @php 
-                                                $mainVotes = totalVote($question->survey_id, $question->id);
-                                                $main = $mainVotes>0?$mainVotes:1;
+                                                $mainVotes  = totalVote($question->survey_id, $question->id);
+                                                $main       = $mainVotes>0?$mainVotes:1;
                                                 $percentage =($main*100)/$main;
                                             @endphp
 
