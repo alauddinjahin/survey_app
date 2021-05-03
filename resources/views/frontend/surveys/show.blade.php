@@ -30,7 +30,7 @@
 <div class="container-fluid p-5 mt-5" style="background: #eaecf8c4; min-height:900px !important;">
 
 	<h4 class="page-title text-uppercase mt-3 font-weight-bold pl-2">
-		<i class="fab fa-artstation"></i>  Survey Reports
+		<i class="fab fa-artstation"></i> Reports of {{ !is_null($survey_reports) && count($survey_reports)>0 ? $survey_reports[0]->title : '' }}
 		<button type="button" class="d-print-none float-right btn btn-sm btn-primary btn-rounded" onclick="window.history.back()"> Back</button>
 		<button type="button" class=" d-print-none float-right btn btn-sm btn-info btn-rounded mx-1" onclick="window.print()"> Print</button>
 	</h4><br>
