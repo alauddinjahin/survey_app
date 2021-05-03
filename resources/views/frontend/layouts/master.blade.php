@@ -28,8 +28,8 @@
      @include('frontend.layouts.partials.footer') 
 
     <script src="{{ asset('ui/backend/dist')}}/assets/js/pages/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('ui/backend/dist/assets/libs/jquery-toast/jquery.toast.min.js') }}"></script>
     <script src="{{ asset('ui/backend/src/js/pages/global-js/init-global-toast.js') }}"></script>
     <script src="{{ asset('ui/backend/src/js/pages/global-js/global-common.js') }}"></script>
