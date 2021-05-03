@@ -1,7 +1,9 @@
 <?php
 
-use App\Models\Survey;
+use App\Models\Answer;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Survey;
 use Illuminate\Support\Facades\DB;
 
 //helper function Check
@@ -349,6 +351,43 @@ if(!function_exists('check_internet')){
 					'msg'	 	=>'',
 					'code'		=>200
 				];
+
+		} catch (Exception $e) {
+			return [
+				'success'	=>false,
+				'msg'	 	=>$e->getMessage(),
+				'code'		=>$e->getCode()
+			];
+		}
+	}
+
+}
+
+
+if(!function_exists('month_wise_data')){
+
+	function month_wise_data()
+	{
+		try 
+		{
+			$answers = Answer::select('id', 'created_at')
+			->get()
+			->groupBy(function($date) {
+				return Carbon::parse($date->created_at)->format('m');
+			});
+
+
+			$ansCount 	= [];
+			$ansArr		= [];
+			$newArr		= [];
+
+			foreach ($answers as $key => $value) { $ansCount[(int)$key] = count($value); }
+
+			for($i = 1; $i <= 12; $i++){ $ansArr[$i] = $ansCount[$i]??0; }
+
+			foreach ($ansArr as $key => $value) { $newArr[] = $value; }
+			
+			return $newArr;
 
 		} catch (Exception $e) {
 			return [
