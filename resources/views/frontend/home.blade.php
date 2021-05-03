@@ -12,7 +12,7 @@
                         <figure><img src="{{ asset('img/info_graphic_1.svg') }}" alt="" class="img-fluid"></figure>
                         <h2 class="font-weight-bold">Satisfaction Survey</h2>
                         <p>Tation argumentum et usu, dicit viderer evertitur te has. Eu dictas concludaturque usu, facete detracto patrioque an per, lucilius pertinacia eu vel.Adhuc invidunt duo ex. Eu tantas dolorum ullamcorper qui.</p>
-                        <a href="#" class="btn_1 rounded" target="_parent">View More</a>
+                        <a href="javascipt:void(0)" class="btn_1 rounded" target="_parent">View More</a>
                     </div>
                 </div>
                 <!-- /content-left-wrapper -->
@@ -199,7 +199,7 @@
                 </div>
             </div>
             @endforeach
-            {{-- {{ $surveys->links() }} --}}
+            {{ $surveys->links() }}
         @endif
     </div>
 </div>
