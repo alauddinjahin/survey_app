@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('frontend.layouts.master')
 
 @section('title', '404-page')
 
@@ -6,9 +6,13 @@
 <style>
 	.centerize{
 		position:absolute;
-		top:0;
-		left:0;
-		transform:translate(50%,50%);
+		top:50%;
+		left:50%;
+		transform:translate(-50%,-50%);
+	}
+
+	.bg-grey{
+		background: rgb(241, 237, 237);
 	}
 </style>
 @endpush
@@ -16,7 +20,7 @@
 
 @section('content')
 <!-- ===================================== -->
-<div class="container text-center mt-5" style="position: relative">
+<div class="container-fluid bg-grey text-center mt-5" style="position: relative;height: 92vh !important;">
 	<div class="centerize">
 		<div class="logo-404">
 			<a href="javascript:void(0)">
