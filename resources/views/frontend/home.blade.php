@@ -199,7 +199,6 @@
                 </div>
             </div>
             @endforeach
-            {{ $surveys->links() }}
         @endif
     </div>
 </div>

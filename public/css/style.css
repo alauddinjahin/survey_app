@@ -1732,3 +1732,7 @@ input[type=file]::-webkit-file-upload-button:focus {
 .navbar-nav > .nav-item:hover{
     border-bottom: 2px solid rgb(102, 71, 252);
 }
+
+#embedarea:hover {
+    box-shadow: none !important;
+}
