@@ -76,7 +76,7 @@
     {    
         let items       = @json(month_wise_data());
         const labels    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        const mainLabel = 'Current Year Total Surveys Report';
+        const mainLabel = 'Total Surveys Report in '+new Date().getFullYear();
     
         const lineChartData = {
             labels: labels,
