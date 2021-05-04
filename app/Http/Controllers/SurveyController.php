@@ -75,6 +75,8 @@ class SurveyController extends Controller
     public function show($id)
     {
         $survey_reports = DB::table('questions')
+                    ->selectRaw('questions.*, surveys.title')
+                    ->join('surveys','surveys.id','=','questions.survey_id')
                     ->where('survey_id',$id)
                     ->orderBy('position','asc')
                     ->get();

@@ -7,7 +7,7 @@
 <div class="container-fluid">
 
 	<h4 class="page-title text-uppercase mt-3">
-		<i class="fab fa-artstation"></i>  Questions Re-arrange
+		<i class="fab fa-artstation"></i> Re-arrange Questions Of {{ !is_null($survey_reports) && count($survey_reports)>0 ? $survey_reports[0]->title : 'Survey' }}
 		<button type="button" class="float-right btn btn-sm btn-primary btn-rounded width-md waves-effect waves-light" onclick="window.history.back()"> Back</button>
 	</h4><br>
 

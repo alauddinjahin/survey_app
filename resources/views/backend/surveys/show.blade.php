@@ -30,7 +30,7 @@
 <div class="container-fluid">
 
 	<h4 class="page-title text-uppercase mt-3">
-		<i class="fab fa-artstation"></i>  Survey Report
+		<i class="fab fa-artstation"></i> Report Of {{ !is_null($survey_reports) && count($survey_reports)>0 ? $survey_reports[0]->title : 'Survey' }}
 		<button type="button" class="d-print-none float-right btn btn-sm btn-primary btn-rounded width-md waves-effect waves-light" onclick="window.history.back()"> Back</button>
 		<button type="button" class=" d-print-none float-right btn btn-sm btn-info btn-rounded width-md waves-effect waves-light mx-1" onclick="window.print()"> Print</button>
 	</h4><br>
