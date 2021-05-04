@@ -74,9 +74,10 @@
 
     function getMonthlyDataInselectedYear()
     {    
-        let items       = @json(month_wise_data());
-        const labels    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        const mainLabel = 'Total Surveys Report in '+new Date().getFullYear();
+        let items           = @json(month_wise_data());
+        const labels        = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        const pieChartColors= ['rgb(255, 99, 132)','#5D8AA8','#FFBF00','#A4C639','#FBCEB1','#7FFFD4','#3B444B','#E9D66B','#6D351A','#007FFF','#89CFF0','#CCCCFF'];
+        const mainLabel     = 'Total Surveys Report in '+new Date().getFullYear();
     
         const lineChartData = {
             labels: labels,
@@ -109,7 +110,7 @@
             datasets: [{
                 label   : mainLabel,
                 data    : items,
-                backgroundColor: ['rgb(255, 99, 132)','#5D8AA8','#FFBF00','#A4C639','#FBCEB1','#7FFFD4','#3B444B','#E9D66B','#6D351A','#007FFF','#89CFF0','#CCCCFF'],
+                backgroundColor: pieChartColors,
                 hoverOffset: 4
             }]
         };
