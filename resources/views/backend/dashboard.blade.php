@@ -37,18 +37,20 @@
 
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="lineChart" style="position: relative; height:50vh; width:100%;"></canvas>
+    <div class="">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="lineChart" style="position: relative; height:50vh; width:100%;"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="pieChart" style="position: relative; height:50vh; width:100%;"></canvas>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="pieChart" style="position: relative; height:50vh; width:100%;"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,60 +67,68 @@
 <script src="{{ asset('ui/backend/dist/assets/js/animate.js') }}"></script>
 <script src="{{ asset('ui/backend/dist/assets/js/dashboard.js') }}"></script>
 <script>
-    let items       = @json(month_wise_data());
-    const labels    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    const mainLabel = 'Total Surveys Report';
-
-    const lineChartData = {
-        labels: labels,
-        datasets: [{
-            label: mainLabel,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: items,
-        }]
-    };
-
-    const lineChartConfig = {
-        type    : 'line',
-        data    : lineChartData,
-        options : {}
-    };
+    $(document).ready(function(){
+        getMonthlyDataInselectedYear();
+    })
 
 
-    let lineChart = new Chart(
-        document.getElementById('lineChart'),
-        lineChartConfig
-    );
-
-
-
-    // pie chart 
-
-    const pieChartData = {
-        labels  : labels,
-        datasets: [{
-            label   : mainLabel,
-            data    : items,
-            backgroundColor: ['rgb(255, 99, 132)','#5D8AA8','#FFBF00','#A4C639','#FBCEB1','#7FFFD4','#3B444B','#E9D66B','#6D351A','#007FFF','#89CFF0','#CCCCFF'],
-            hoverOffset: 4
-        }]
-    };
-
-
-    const pieChartConfig = {
-        type: 'pie',
-        data: pieChartData,
-        options:{
-            responsive:false
-        }
-
-    };
-
-    let pieChart = new Chart(
-        document.getElementById('pieChart'),
-        pieChartConfig
-    );
+    function getMonthlyDataInselectedYear()
+    {    
+        let items       = @json(month_wise_data());
+        const labels    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        const mainLabel = 'Current Year Total Surveys Report';
+    
+        const lineChartData = {
+            labels: labels,
+            datasets: [{
+                label: mainLabel,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: items,
+            }]
+        };
+    
+        const lineChartConfig = {
+            type    : 'line',
+            data    : lineChartData,
+            options : {}
+        };
+    
+    
+        let lineChart = new Chart(
+            document.getElementById('lineChart'),
+            lineChartConfig
+        );
+    
+    
+    
+        // pie chart 
+    
+        const pieChartData = {
+            labels  : labels,
+            datasets: [{
+                label   : mainLabel,
+                data    : items,
+                backgroundColor: ['rgb(255, 99, 132)','#5D8AA8','#FFBF00','#A4C639','#FBCEB1','#7FFFD4','#3B444B','#E9D66B','#6D351A','#007FFF','#89CFF0','#CCCCFF'],
+                hoverOffset: 4
+            }]
+        };
+    
+    
+        const pieChartConfig = {
+            type: 'pie',
+            data: pieChartData,
+            options:{
+                responsive:false,
+            }
+    
+        };
+    
+        let pieChart = new Chart(
+            document.getElementById('pieChart'),
+            pieChartConfig
+        );
+    }
 
 
 

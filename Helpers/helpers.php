@@ -366,11 +366,14 @@ if(!function_exists('check_internet')){
 
 if(!function_exists('month_wise_data')){
 
-	function month_wise_data()
+	function month_wise_data($year=null)
 	{
 		try 
 		{
+			$y = !is_null($year) ? $year : date('Y');
+			
 			$answers = Answer::select('id', 'created_at')
+			->whereYear('created_at',$y)
 			->get()
 			->groupBy(function($date) {
 				return Carbon::parse($date->created_at)->format('m');
