@@ -1736,3 +1736,8 @@ input[type=file]::-webkit-file-upload-button:focus {
 #embedarea:hover {
     box-shadow: none !important;
 }
+
+
+.shadow:hover {
+    box-shadow: 0px 0px 12px #eeeded !important;
+}
