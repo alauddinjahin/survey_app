@@ -40,14 +40,14 @@
     <div class="">
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-body">
                         <canvas id="lineChart" style="position: relative; height:50vh; width:100%;"></canvas>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-body">
                         <canvas id="pieChart" style="position: relative; height:50vh; width:100%;"></canvas>
                     </div>
